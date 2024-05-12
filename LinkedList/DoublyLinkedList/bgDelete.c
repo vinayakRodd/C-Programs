@@ -1,5 +1,4 @@
-// Implementation of Doubly Linked List,by Deleting a node in the Beginning//
-
+ // Implementation of Deletion of Node in Doubly LinkedList //
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,8 +11,8 @@ struct Node{
 
 int main(){
     
-        struct Node *Head=NULL,*ptr;
-        int a;
+        struct Node *Head=NULL,*ptr,*p,*q;
+        int a,val;
 
         while(1){
 
@@ -52,9 +51,39 @@ int main(){
 
         printf("NULL");
 
-        ptr=Head;
-        Head=ptr->next;
-        ptr=Head;
+        printf("\nEnter the value of node to delete: ");
+        scanf("%d",&val);
+        
+        p=Head;
+        
+        if(p->data == val){
+            Head = p->next;
+            Head->prev = NULL;
+            
+        }
+        
+        else{
+            
+            while(p->data != val){
+                ptr = p;
+                p = p -> next;
+            }
+            
+            if(p -> next != NULL){
+                q = p -> next;
+                ptr -> next = p -> next;
+                q -> prev = ptr;
+            }
+            
+            else{
+                
+                ptr -> next = NULL;
+            }
+            
+            
+        }
+        
+        ptr = Head;
 
         printf("\n");
         while(ptr!=NULL){
