@@ -11,7 +11,7 @@ struct Node{
 int main(){
 
         struct Node *Head=NULL,*ptr,*p,*q;
-        int a;
+        int a,val;
 
         while(1){
 
@@ -20,15 +20,23 @@ int main(){
         scanf("%d",&ptr->data);
 
         if(Head==NULL){
+        
             Head=ptr;
             p=Head;
+            p -> next=ptr;
         }
 
         else{
 
-            p->next=ptr;
-            p=p->next;
-        }
+            
+            ptr -> next = Head;
+            p -> next=ptr;
+            Head = ptr;
+            
+            
+            
+           
+            }
 
         printf("\nEnter (1 or 0): ");
         scanf("%d",&a);
@@ -36,35 +44,52 @@ int main(){
         if(a==0)
         break;
 
-    }
-        p->next=Head;
-        q=Head;
-        printf("\n");
-        while(q!=ptr){
-            printf("%d",q->data);
-            printf("->");
-            q=q->next;
-
-            if(q==ptr){
-                printf("%d",q->data);
-                printf("->");
-            }
         }
-
-        q=Head;
-        Head=q->next;
-        q=Head;
-
-        printf("\n");
-        while(q!=ptr){
-            printf("%d",q->data);
-            printf("->");
-            q=q->next;
         
-            if(q==ptr){
-                printf("%d",q->data);
-                printf("->");
-            }
+        
+        q = Head;
+        
+        
+        printf("\n");
+        
+        do{
+            
+            printf("%d -> ",q->data);
+            q = q -> next;
+        }while(q != Head);
+        
+        printf("NULL");
+
+        printf("\nEnter the value of node to delete: ");
+        scanf("%d",&val);
+        
+        q=Head;
+        
+        if(q->data == val){
+            Head = q->next;
+            p -> next = Head;
         }
+        
+        else{
+            
+            while(q->data != val){
+                ptr = q;
+                q = q -> next;
+            }
+            
+            ptr -> next = q -> next;
+            
+            
+        }
+        
+        q = Head;
+        
+        do{
+            
+            printf("%d -> ",q->data);
+            q = q -> next;
+        }while(q != Head);
+        
+        printf("NULL");
 
 }
