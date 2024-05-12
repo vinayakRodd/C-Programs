@@ -62,6 +62,10 @@ void bgDelete(struct Node *ptr){
         scanf("%d",&i);
 
         p=Head;
+        if(p->data == i){
+            Head = p->next;
+            
+        }
         while((p->data)!=i){
             p=p->next;
         }
