@@ -11,7 +11,7 @@ struct Node{
 
 int main(){
 
-        struct Node *Head=NULL,*ptr,*p,*q;
+        struct Node *Head=NULL,*ptr,*p,*q,*prev=NULL,*current,*front;
         int a;
         while(1){
             ptr=(struct Node *)malloc(sizeof(struct Node));
@@ -41,8 +41,38 @@ int main(){
             printf("->");
             ptr=ptr->next;
         }
-
         printf("NULL");
+        
+        // Reversing Operation //
+        
+        
+
+        current = Head;
+        front = Head;
+        
+        while(front != NULL){
+            
+            
+            front = front -> next ;
+            current -> next = prev;
+            prev = current;
+            current = front;
+            
+        }
+        
+        ptr = prev;
+        
+        printf("\n");
+        
+        while(ptr != NULL){
+            
+            printf("%d -> ",ptr->data);
+            ptr = ptr -> next;
+            
+        }
+        printf("NULL");
+        
+
 
 
 }
