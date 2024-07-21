@@ -7,7 +7,8 @@ int main() {
     int a[100][100];
     int n,m;
     
-    cin>>n>>m;
+    cin>>n;
+    m = n;
     
     for(int i=0; i<n; i++){
         
